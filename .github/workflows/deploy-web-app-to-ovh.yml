@@ -1,0 +1,27 @@
+name: deploy-web-app-to-ovh
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Aftercinema.fr/**"
+
+jobs:
+  deploy-web-app-to-ovh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Copy files
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "Aftercinema.fr"
+          target: "/home/afterch/www"
+          rm: true
+          strip_components: 1
