@@ -21,8 +21,8 @@ jobs:
           server: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
-          protocol: sftp
-          port: 22
+          protocol: ftp
+          port: 21
           server-dir: /home/afterch/www/
           local-dir: ./Aftercinema.fr/
           dangerous-clean-slate: true
