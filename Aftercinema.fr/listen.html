@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta property="og:image" content="./assets/logo.png" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="500" />
+		<meta property="og:image:height" content="394" />
+		<link rel="shortcut icon" href="./assets/icon.ico" type="image/x-icon" />
+		<title>Écouter Aftercinema</title>
+		<style>
+			@font-face {
+				font-family: "Geist-Regular";
+				src: url("./assets/Geist-Regular.otf") format("opentype");
+				font-weight: normal;
+				font-style: normal;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: "Geist-Regular", sans-serif;
+			}
+			#logo {
+				text-align: center;
+				margin-top: 50px;
+			}
+			#platforms {
+				text-align: center;
+				margin-top: 50px;
+			}
+			.platform-button {
+				display: inline-block;
+				width: 200px;
+				height: 60px;
+				margin: 20px;
+				border-radius: 30px;
+				border: 2px solid #000;
+				background-color: transparent;
+				text-align: center;
+				line-height: 60px;
+				font-weight: bold;
+				text-transform: uppercase;
+				cursor: pointer;
+				transition: background-color 0.3s ease;
+			}
+			.platform-button:hover {
+				background-color: #000;
+				color: #fff;
+			}
+			.platform-button img {
+				width: 40px;
+				margin-right: 10px;
+			}
+			@media (max-width: 600px) {
+				.platform-button {
+					width: 150px;
+					height: 50px;
+					line-height: 50px;
+					font-size: 14px;
+				}
+				#logo img {
+					width: 200px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="logo">
+			<img src="assets/logo.png" alt="Logo du podcast" />
+		</div>
+		<div id="platforms">
+			<a href="https://open.spotify.com/"
+				><div class="platform-button">
+					<img src="assets/platforms/spotify.png" alt="Logo Spotify" />
+					Écouter sur Spotify
+				</div></a
+			>
+			<a href="https://www.deezer.com/"
+				><div class="platform-button">
+					<img src="assets/platforms/deezer.png" alt="Logo Deezer" />
+					Écouter sur Deezer
+				</div></a
+			>
+		</div>
+	</body>
+</html>
