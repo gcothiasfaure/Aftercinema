@@ -23,6 +23,6 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           protocol: ftp
           port: 21
-          server-dir: /home/afterch/www/
+          server-dir: /www/
           local-dir: ./Aftercinema.fr/
           dangerous-clean-slate: true
