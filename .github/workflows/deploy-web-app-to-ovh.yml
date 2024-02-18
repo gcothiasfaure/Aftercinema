@@ -12,16 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Copy files
-        uses: appleboy/scp-action@v0.1.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.VPS_HOST }}
+          server: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
-          source: "Aftercinema.fr"
-          target: "/home/afterch/www"
-          rm: true
-          strip_components: 1
+          protocol: sftp
+          port: 22
+          server-dir: /home/afterch/www/
+          local-dir: ./Aftercinema.fr/
+          dangerous-clean-slate: true
