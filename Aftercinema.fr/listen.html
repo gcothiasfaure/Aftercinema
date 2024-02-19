@@ -45,7 +45,6 @@
 				width: min-content;
 				border-radius: 50px;
 				padding: 10px;
-				/* margin-top: 30px; */
 				margin-right: 30px;
 				cursor: pointer;
 			}
@@ -60,7 +59,6 @@
 				justify-content: center;
 			}
 			.platform-button {
-				min-width: 300px;
 				background-color: black;
 				color: white;
 				border-radius: 15px;
@@ -68,7 +66,6 @@
 				padding: 5px;
 				cursor: pointer;
 			}
-
 			.platform-button:first-child{
 				margin-bottom: 20px;
 			}
@@ -78,17 +75,7 @@
 			.card-content{
 				display: flex;
 				align-items: center;
-				justify-content: space-between;
 			}
-			/* #toast{
-				position: absolute;
-				top:0;
-				background-color: rgb(236, 236, 236);
-				left: 50%;
-				transform: translateX(-50%);
-				padding-top: 20px;
-				text-align: center;
-			} */
 			#toast{
 				display: none;
 				margin-right: 10px;
@@ -97,6 +84,20 @@
 			#link-and-toast-container{
 				display: flex;
 				align-items: center;
+			}
+			.text-and-platform{
+				width: 270px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			@media screen and (max-width: 374px) {
+				.text-and-platform{
+					width: 240px;
+				}
+			}
+			.platform-logo-in-card{
+				margin-left: 5px;
 			}
 		</style>
 	</head>
@@ -108,7 +109,6 @@
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="18.75" height="15"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
 				</div>
 			</div>
-			
 		</div>
 		<div id="logo">
 			<img src="assets/logos/logo500x500px.png" width="150" height="150" alt="Logo du podcast" />
@@ -116,34 +116,36 @@
 		<div id="platforms-container">
 			<div>
 				<div class="platform-button">
-					<a href="https://open.spotify.com/" target="_blank">
-						<div class="card-content">	<img src="assets/logos/logo500x500px.png" class="logo-in-card" width="50" height="50" alt="Logo du podcast" />
-							<p>Aftercinema sur Spotify</p>
-							<img class="platform-logo-in-card" src="assets/platforms/spotify.png" width="20" height="20" alt="Logo Spotify" />
+					<a href="https://open.spotify.com/show/6NCAzw8ZJ0Nuuo1Ci47HEy?si=8de6bdc0d7a542e0" target="_blank">
+						<div class="card-content">
+							<img src="assets/logos/logo500x500px.png" class="logo-in-card" width="50" height="50" alt="Logo du podcast" />
+							<div class="text-and-platform">
+								<p>Aftercinema sur Spotify</p>
+								<img class="platform-logo-in-card" src="assets/platforms/spotify.png" width="20" height="20" alt="Logo Spotify" />
+							</div>
 						</div>
 					</a>
 				</div>
 			
 				<div class="platform-button">
-					<a href="https://deezer.com/" target="_blank">
-						<div class="card-content">	
+					<a href="https://deezer.page.link/12iGVYdh3JxWM1na9" target="_blank">
+						<div class="card-content">
 							<img src="assets/logos/logo500x500px.png" class="logo-in-card" width="50" height="50" alt="Logo du podcast" />
-							<p>Aftercinema sur Deezer</p>
-							<img class="platform-logo-in-card" src="assets/platforms/deezer.png" width="20" height="20" alt="Logo Deezer" />
+							<div class="text-and-platform">
+								<p>Aftercinema sur Deezer</p>
+								<img class="platform-logo-in-card" src="assets/platforms/deezer.png" width="20" height="20" alt="Logo Deezer" />
+							</div>
 						</div>
 					</a>
 				</div>
 			</div>
 		</div>
-		<!-- <div id="toast">
-			<p>Lien copié!</p>
-		</div> -->
 		<script>
 			document.getElementById("link-logo").addEventListener("click", () => copyTextToClipboard());
 			function copyTextToClipboard() {
-				var dummy = document.createElement('input'),text = window.location.href;
+				var dummy = document.createElement('input');
 				document.body.appendChild(dummy);
-				dummy.value = text;
+				dummy.value = "https://aftercinema.fr/listen";
 				dummy.select();
 				document.execCommand('copy');
 				document.body.removeChild(dummy);
@@ -152,7 +154,6 @@
 					document.getElementById("toast").style.display = "none";
 				}, 5000);
 			}
-			
 		</script>
 	</body>
 </html>
