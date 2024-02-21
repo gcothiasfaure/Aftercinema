@@ -119,9 +119,24 @@
 				align-items: center;
 				justify-content: center;
 			}
+			
 			@media screen and (max-width: 374px) {
 				.text-and-platform {
 					width: 240px;
+				}
+			}
+			.popup-content {
+				background-color: #fff;
+				width: 600px;
+				margin: 100px auto;
+				padding: 25px;
+				border-radius: 5px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+				position: relative;
+			}
+			@media screen and (max-width: 670px) {
+				.popup-content {
+					width: 80%;
 				}
 			}
 			.platform-logo-in-card {
@@ -129,40 +144,70 @@
 			}
 
 			.popup {
-    /* display: none; */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 999;
+			}
 
-.popup-content {
-    background-color: #fff;
-    width: 50%;
-    margin: 100px auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    position: relative;
-}
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				cursor: pointer;
+				font-size: 20px;
+			}
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
-}
+			#form-container{
+				margin-top: 30px;
+				display: flex;
+				align-items: center;
+			}
+
+			#toast-send-email{
+				display: none;
+				margin-left: 5px;
+				color: darkseagreen;
+			}
+
+			input[type=submit]{
+				font-family: "Geist-Regular", sans-serif;
+				background-color: rgb(236, 236, 236);
+				border: none;
+				padding: 11px;
+				border-radius: 20px;
+				text-decoration: none;
+				cursor: pointer;
+				color: #000;
+				margin-left: 5px;
+			}
+
+			input[type=email]{
+				height: 25px;
+				border-radius: 5px;
+				font-size: 14px;
+				font-family: "Geist-Regular", sans-serif;
+				border: 2px black solid;
+			}
+
+			input[type=submit]:hover{
+				background-color:rgb(202, 202, 202)
+			}
+
+			#span-bold{
+				font-weight: bold;
+			}
 
 		</style>
 	</head>
 	<body>
 		<div id="link-container">
 			<div class="link-and-toast-container">
-				<div class="link-logo-1">
+				<div id="open-modal" class="link-logo-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="20"
@@ -204,7 +249,7 @@
 			<div>
 				<div class="platform-button">
 					<a
-						href="https://open.spotify.com/show/6NCAzw8ZJ0Nuuo1Ci47HEy?si=8de6bdc0d7a542e0"
+						href="https://open.spotify.com/show/2KOkfi3CO92Rn03JK0CvIg"
 						target="_blank"
 					>
 						<div class="card-content">
@@ -230,7 +275,7 @@
 				</div>
 
 				<div class="platform-button">
-					<a href="https://deezer.page.link/12iGVYdh3JxWM1na9" target="_blank">
+					<a href="https://deezer.page.link/yxtgraNQ82HEwZkU7" target="_blank">
 						<div class="card-content">
 							<img
 								src="assets/logos/logo500x500px.png"
@@ -257,11 +302,20 @@
 
 		<div id="popup" class="popup">
 			<div class="popup-content">
-				<div onclick="togglePopup()" class="close">
+				<div id="close-popup" class="close">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20" height="20"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
 				</div>
-				<p>Pour être alerté lors de la prochaine sortie d'Aftercinema!</p>
-				<input type="email" name="email" id="input-email" placeholder="Email">
+				<p>Hey! Rentre ton email pour recevoir les alertes <span id="span-bold">Aftercinema</span>!</p>
+				<form id="form">
+					<div id="form-container">
+						<div>
+							<input type="email" id="email" name="email" required>
+							<input type="submit" value="OK">
+						</div>
+						<p id="toast-send-email">Envoyé!</p>
+					</div>
+					
+				</form>
 			</div>
 		</div>
 
@@ -281,10 +335,48 @@
 					document.getElementById("toast").style.display = "none";
 				}, 5000);
 			}
-			function togglePopup() {
-				var popup = document.getElementById("popup");
-				popup.style.display = popup.style.display === "none" ? "block" : "none";
-			}
+
+			document.getElementById("open-modal").addEventListener("click", function(event) {
+				document.getElementById("popup").style.display = "block"
+			})
+			document.getElementById("close-popup").addEventListener("click", function(event) {
+				document.getElementById("popup").style.display = "none"
+			})
+
+			document.getElementById("form").addEventListener("submit", function(event) {
+				event.preventDefault();
+				
+				// Récupérer les données du formulaire
+				var formData = new FormData(this);
+				console.log(formData)
+
+				document.getElementById("email").value = ""
+
+				document.getElementById("toast-send-email").style.display = "block";
+				var idsetTimeout = setTimeout(function () {
+					document.getElementById("toast-send-email").style.display = "none";
+				}, 4000);
+				var idsetTimeout = setTimeout(function () {
+					document.getElementById("popup").style.display = "none"
+				}, 5000);
+				
+				// Envoyer les données à l'API via une requête fetch
+				// fetch("http://your-fastapi-url/store-email/", {
+				// 	method: "POST",
+				// 	body: formData
+				// })
+				// .then(response => response.json())
+				// .then(data => {
+				// 	// Traiter la réponse de l'API ici
+				// 	console.log(data);
+				// 	alert("Email sent successfully!");
+				// })
+				// .catch(error => {
+				// 	// Gérer les erreurs ici
+				// 	console.error("Error:", error);
+				// 	alert("An error occurred. Please try again later.");
+				// });
+			});
 		</script>
 	</body>
 </html>
