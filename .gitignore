@@ -1,2 +1,4 @@
 sources
 logo
+.venv
+__pycache__
