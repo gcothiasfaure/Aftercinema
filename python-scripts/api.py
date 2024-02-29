@@ -12,7 +12,7 @@ class Email(BaseModel):
 conn = sqlite3.connect('database.db')
 cur = conn.cursor()
 
-# Créer la table emails si elle n'existe pas
+# Code SQL de création la table emails
 # DROP TABLE emails;CREATE TABLE emails (id INTEGER PRIMARY KEY AUTOINCREMENT,email TEXT UNIQUE)
 
 def add_email(email):
