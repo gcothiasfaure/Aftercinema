@@ -1,61 +1,145 @@
-document
-	.getElementById("link-logo-share")
-	.addEventListener("click", () => copyTextToClipboard());
-function copyTextToClipboard() {
-	var dummy = document.createElement("input");
-	document.body.appendChild(dummy);
-	dummy.value = "https://aftercinema.fr/listen";
-	dummy.select();
+// icônes du menu
+const emailIconElement = document.getElementById("email-icon");
+const shareIconElement = document.getElementById("share-icon");
+const bellIconElement = document.getElementById("bell-icon");
+
+// icône de fermeture de la popup
+const closeIconElement = document.getElementById("close-icon");
+
+// controlleurs du formulaire (bell)
+const emailInputElement = document.getElementById("email-input");
+const formElement = document.getElementById("form");
+const inputElement = document.getElementById("enter-email");
+
+// toasts
+const toastBellPopupContentElement = document.getElementById(
+	"toast-bell-popup-content"
+);
+
+// contenus des popups
+const mailPopupContentElement = document.getElementById("mail-popup-content");
+const sharePopupContentElement = document.getElementById("share-popup-content");
+const bellPopupContentElement = document.getElementById("bell-popup-content");
+
+// popup entière
+const popupElement = document.getElementById("popup");
+
+// définition des timeouts
+var timeoutShare;
+var timeoutBell;
+
+// copier texte dans presse-papier
+function copyTextToClipboard(text) {
+	const dummyInputElement = document.createElement("input");
+	document.body.appendChild(dummyInputElement);
+	dummyInputElement.value = text;
+	dummyInputElement.select();
 	document.execCommand("copy");
-	document.body.removeChild(dummy);
-	document.getElementById("toast").style.display = "block";
-	var idsetTimeout = setTimeout(function () {
-		document.getElementById("toast").style.display = "none";
-	}, 5000);
+	document.body.removeChild(dummyInputElement);
 }
 
-document
-	.getElementById("open-modal")
-	.addEventListener("click", function (event) {
-		document.getElementById("popup").style.display = "block";
-	});
-document
-	.getElementById("close-popup")
-	.addEventListener("click", function (event) {
-		document.getElementById("popup").style.display = "none";
-	});
+// fonction de clic sur l'icône share
+function clickOnShareIcon() {
+	copyTextToClipboard("https://aftercinema.fr/listen");
 
-document.getElementById("form").addEventListener("submit", function (event) {
+	// affichage du contenu de la popup share
+	sharePopupContentElement.style.display = "block";
+	popupElement.style.display = "flex";
+
+	timeoutShare = setTimeout(function () {
+		// masquage du contenu de la popup share
+		popupElement.style.display = "none";
+		sharePopupContentElement.style.display = "none";
+	}, 3000);
+}
+
+// listener de l'icône share
+shareIconElement.addEventListener("click", clickOnShareIcon);
+
+// fonction de clic sur l'icône bell
+function clickOnBellIcon() {
+	// affichage du contenu de la popup bell
+	bellPopupContentElement.style.display = "block";
+	popupElement.style.display = "flex";
+}
+
+// listener de l'icône bell
+bellIconElement.addEventListener("click", clickOnBellIcon);
+
+// fonction de reset de la popup mail
+function resetEmailPopup() {
+	bellPopupContentElement.style.display = "none";
+	mailPopupContentElement.style.display = "none";
+	sharePopupContentElement.style.display = "none";
+	popupElement.style.display = "none";
+	toastBellPopupContentElement.style.display = "none";
+	formElement.style.display = "flex";
+	emailInputElement.value = "";
+}
+
+// fonction de clic sur l'icône close
+function clickOnCloseIcon() {
+	resetEmailPopup();
+	clearTimeout(timeoutBell);
+	clearTimeout(timeoutShare);
+}
+
+// listener de l'icône close
+closeIconElement.addEventListener("click", clickOnCloseIcon);
+
+// fonction de l'envoie du formulaire
+async function submitForm(event) {
 	event.preventDefault();
 
-	// Récupérer les données du formulaire
-	var formData = new FormData(this);
-	console.log(formData);
+	const emailValue = emailInputElement.value;
+	emailInputElement.value = "";
 
-	document.getElementById("email").value = "";
+	toastBellPopupContentElement.style.display = "block";
+	formElement.style.display = "none";
 
-	document.getElementById("toast-send-email").style.display = "block";
-	var idsetTimeout = setTimeout(function () {
-		document.getElementById("toast-send-email").style.display = "none";
-	}, 4000);
-	var idsetTimeout = setTimeout(function () {
-		document.getElementById("popup").style.display = "none";
-	}, 5000);
+	timeoutBell = setTimeout(function () {
+		resetEmailPopup();
+	}, 3000);
 
-	// Envoyer les données à l'API via une requête fetch
-	// fetch("http://your-fastapi-url/store-email/", {
+	// formElement.reset();
+
+	console.log({ email: emailValue });
+
+	// const response = await fetch("http://127.0.0.1:8000/store-email", {
 	// 	method: "POST",
-	// 	body: formData
-	// })
-	// .then(response => response.json())
-	// .then(data => {
-	// 	// Traiter la réponse de l'API ici
-	// 	console.log(data);
-	// 	alert("Email sent successfully!");
-	// })
-	// .catch(error => {
-	// 	// Gérer les erreurs ici
-	// 	console.error("Error:", error);
-	// 	alert("An error occurred. Please try again later.");
+	// 	headers: {
+	// 		"Content-Type": "application/json",
+	// 	},
+	// 	body: JSON.stringify({ email: emailValue }),
 	// });
-});
+	// const movies = await response.json();
+	// console.log(movies);
+
+	const { data } = await axios.post("http://127.0.0.1:8000/store-email", {
+		email: emailValue,
+	});
+	console.log(data);
+
+	// api.aftercinema.fr
+	// fetch("")
+	// 	.then((response) => response.json())
+	// 	.then((data) => {
+	// 		console.log(data);
+	// 		// formElement.reset();
+	// 	})
+	// 	.catch((error) => {
+	// 		console.log("Erreur lors de l'envoi de l'email : " + error);
+	// 	});
+}
+
+// listener de l'envoi du formulaire
+inputElement.addEventListener("click", submitForm);
+
+// fonction de clic sur l'icone mail
+function clickOnEmailIcon() {
+	mailPopupContentElement.style.display = "block";
+	popupElement.style.display = "flex";
+}
+
+// lisener de l'icone mail
+emailIconElement.addEventListener("click", clickOnEmailIcon);
