@@ -101,35 +101,7 @@ async function submitForm(event) {
 		resetEmailPopup();
 	}, 3000);
 
-	// formElement.reset();
-
-	console.log({ email: emailValue });
-
-	// const response = await fetch("http://127.0.0.1:8000/store-email", {
-	// 	method: "POST",
-	// 	headers: {
-	// 		"Content-Type": "application/json",
-	// 	},
-	// 	body: JSON.stringify({ email: emailValue }),
-	// });
-	// const movies = await response.json();
-	// console.log(movies);
-
-	const { data } = await axios.post("http://127.0.0.1:8000/store-email", {
-		email: emailValue,
-	});
-	console.log(data);
-
-	// api.aftercinema.fr
-	// fetch("")
-	// 	.then((response) => response.json())
-	// 	.then((data) => {
-	// 		console.log(data);
-	// 		// formElement.reset();
-	// 	})
-	// 	.catch((error) => {
-	// 		console.log("Erreur lors de l'envoi de l'email : " + error);
-	// 	});
+	await fetch("http://127.0.0.1:8000/store-email?email="+emailValue);
 }
 
 // listener de l'envoi du formulaire

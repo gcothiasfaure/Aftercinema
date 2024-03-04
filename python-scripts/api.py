@@ -1,22 +1,36 @@
-import sqlite3
 from fastapi import FastAPI, HTTPException
-import re
-import requests
-import xml.etree.ElementTree as ET
 from fastapi.middleware.cors import CORSMiddleware
-import uuid
-from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
+import re
+import uuid
+from sqlalchemy import create_engine, Column, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
 
-class Email(BaseModel):
+# Création de la base de données
+SQLALCHEMY_DATABASE_URL = "sqlite:///./database.db"
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# Définition du modèle SQLAlchemy pour la table "emails"
+class Email(Base):
+    __tablename__ = "emails"
+
+    id = Column(String, primary_key=True, index=True)
+    email = Column(String, unique=True, index=True)
+
+# Création de la table dans la base de données
+Base.metadata.create_all(bind=engine)
+
+# Définition du modèle Pydantic pour l'e-mail
+class EmailRequest(BaseModel):
     email: str
 
 app = FastAPI()
 
-origins = [
-    "http://127.0.0.1:5500",
-]
-
+# Configuration des paramètres CORS
+origins = ["http://127.0.0.1:5500"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -25,51 +39,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Connexion à la base de données
-conn = sqlite3.connect('database.db')
-cur = conn.cursor()
-
-# Code SQL de création la table emails
-# DROP TABLE emails;CREATE TABLE emails (id TEXT PRIMARY KEY,email TEXT UNIQUE)
-
-@app.get("/")
-async def hello():
-    return {"Hello":"World"}
-
-@app.post("/store-email/")
-async def store_email(email :Email):
-    print(email.email)
-    # if not bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email)):
-    #     raise HTTPException(status_code=400, detail="Invalid email adress")
-    
-    # cur.execute("INSERT INTO emails (id,email) VALUES (?,?)", (str(uuid.uuid4()),email.email))
-    # conn.commit()
-    
-    return "ij"
-    
+# Fonction pour obtenir une session de base de données
+def get_db():
+    db = SessionLocal()
     try:
-        cur.execute("INSERT INTO emails (id,email) VALUES (?,?)", (str(uuid.uuid4()),email))
-        conn.commit()
-    except sqlite3.IntegrityError:
+        yield db
+    finally:
+        db.close()
+
+# Fonction pour vérifier si l'e-mail existe déjà
+def email_exists(db: Session, email: str):
+    return db.query(Email).filter(Email.email == email).first()
+
+# Route pour stocker l'e-mail
+@app.post("/store-email", response_model=EmailRequest)
+async def store_email(email: EmailRequest, db: Session = Depends(get_db)):
+    if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email.email):
+        raise HTTPException(status_code=400, detail="Invalid email address")
+    if email_exists(db, email.email):
         raise HTTPException(status_code=400, detail="Email already exists")
-
-    return {"message": "Email stored successfully", "email": email},200
-
-@app.get("/delete-email")
-async def delete_email(email: str):
-    try:
-        cur.execute("DELETE FROM emails WHERE email = ?", (email,))
-        conn.commit()
-    except:
-        with open("html-templates/fail-deleted-email.html", "r",encoding="utf-8") as file:
-            html_content = file.read()
-        return HTMLResponse(content=html_content,status_code=400)
-    with open("html-templates/deleted-email.html", "r",encoding="utf-8") as file:
-        html_content = file.read()
-    return HTMLResponse(content=html_content)
-
-@app.get("/get-episodes")
-async def get_episodes():
-    response = requests.get("https://feeds.acast.com/public/shows/aftercinema")
-    root = ET.fromstring(response.content)
-    return {"episode-ids":[item.text for item in root.findall('.//{https://schema.acast.com/1.0/}episodeId')]}
+    db.add(Email(id=str(uuid.uuid4()), email=email.email))
+    db.commit()
+    return email
