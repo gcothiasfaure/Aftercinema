@@ -35,15 +35,203 @@
 		<link rel="stylesheet" href="./index.css" />
 	</head>
 	<body>
-		<div class="container">
-			<img
-				src="./assets/logos/logo500x384px.png"
-				alt="logo Aftercinema"
-				width="500"
-			/>
-			<p>Arrive bientôt...</p>
-			<a href="mailto:contact@aftercinema.fr">contact@aftercinema.fr</a>
+		<div id="icons-container">
+			<div id="icons-sub-container">
+				<div id="email-icon" class="icon-container">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="32"
+						height="32"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<rect width="20" height="16" x="2" y="4" rx="2" />
+						<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+					</svg>
+				</div>
+				<div id="bell-icon" class="icon-container">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="32"
+						height="32"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+						<path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+					</svg>
+				</div>
+				<div id="share-icon" class="icon-container">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="32"
+						height="32"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+						<polyline points="16 6 12 2 8 6" />
+						<line x1="12" x2="12" y1="2" y2="15" />
+					</svg>
+				</div>
+			</div>
 		</div>
+
+		<!-- logo -->
+
+		<div id="logo-container">
+			<img
+				id="logo-img"
+				src="./assets/logos/logo500x500px.png"
+				alt="Logo d'Aftercinema"
+			/>
+		</div>
+
+		<div id="content-container">
+			<!-- accroche -->
+			<div class="subjet-container">
+				<h1>Aftercinema</h1>
+				<p>Le nouveau podcast qui célèbre l'après-cinéma!</p>
+			</div>
+
+			<div id="action-btn">
+				<a href="https://aftercinema.fr/listen" target="_blank">
+					<p>Écoute Aftercinema!</p>
+				</a>
+			</div>
+
+			<!-- Contenu -->
+			<div class="subjet-container" id="quoi-container">
+				<h2>Aftercinema c'est quoi ?</h2>
+				<p>
+					Aftercinema réunit quatre amis partageant une passion commune pour le
+					cinéma. Entre couple, mais aussi amitiés de longue date, on t'invite à
+					nous retrouver chaque mois pour une discussion sans prétention autour
+					des nouvelles sorties ciné. Au cœur de notre podcast, découvre nos
+					avis sur trois ou quatre films qu'on a vu et sélectionné au cours du
+					mois.
+				</p>
+				<p id="quoi-second-paraph">
+					Explore également avec nous dans un épisode bonus : une thématique
+					inspirée par l'un des films pour aller plus loin sur un thème, la
+					carrière d'une personnalité ou le debrief d'un événement
+					incontournable du cinéma.
+				</p>
+			</div>
+			<div class="subjet-container">
+				<h2>Aftercinema c'est qui ?</h2>
+				<div id="qui-container">
+					<div class="qui-sub-container">
+						<img
+							class="img-right"
+							src="./assets/podcasters/sneha.png"
+							alt="Portait d'un podcaster"
+						/>
+						<p>Snéha, future psychiatre mais surtout fan de Sezane</p>
+					</div>
+					<div id="walid-container">
+						<p class="text-align-end">
+							Walid, consultant en développement durable mais toujours prêt à
+							prendre l'avion pour Rafaël Nadal
+						</p>
+						<img
+							class="img-left"
+							src="./assets/podcasters/walid.png"
+							alt="Portait d'un podcaster"
+						/>
+					</div>
+					<div class="qui-sub-container">
+						<img
+							class="img-right"
+							src="./assets/podcasters/nina.png"
+							alt="Portait d'un podcaster"
+						/>
+						<p>
+							Nina deux licences et deux masters dans les médias mais toujours
+							au chômage
+						</p>
+					</div>
+					<div id="gaspard-container">
+						<p class="text-align-end">
+							Gaspard, ingénieur en informatique et grand adepte de pastis
+						</p>
+						<img
+							class="img-left"
+							src="./assets/podcasters/gaspard.png"
+							alt="Portait d'un podcaster"
+						/>
+					</div>
+				</div>
+			</div>
+			<div class="subjet-container">
+				<h2>Aftercinema c'est où et c'est quand ?</h2>
+				<p>C'est tous les mois sur ta plateforme de streaming ou sur le web!</p>
+			</div>
+
+			<div id="action-btn">
+				<a href="https://aftercinema.fr/listen" target="_blank">
+					<p>Écoute Aftercinema!</p>
+				</a>
+			</div>
+		</div>
+
+		<!-- popup -->
+
+		<div id="popup">
+			<div id="popup-content">
+				<div id="close-icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="32"
+						height="32"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M18 6 6 18" />
+						<path d="m6 6 12 12" />
+					</svg>
+				</div>
+				<div id="bell-popup-content">
+					<p id="toast-bell-popup-content">Envoyé!</p>
+					<form id="form">
+						<p>
+							Pour recevoir les dernières nouvelles d'<span id="span-bold"
+								>Aftercinema</span
+							>, rentre ton email ici:
+						</p>
+						<input type="email" id="email-input" required />
+						<input type="submit" value="GO!" />
+					</form>
+				</div>
+				<div id="mail-popup-content">
+					<p>
+						Pour contacter l'équipe d'<span id="span-bold">Aftercinema</span>,
+						envoie un mail à
+						<a href="mailto:contact@aftercinema.fr">contact@aftercinema.fr</a>!
+					</p>
+				</div>
+				<div id="share-popup-content">
+					<p>Lien copié!</p>
+				</div>
+			</div>
+		</div>
+
 		<script src="./index.js"></script>
 	</body>
 </html>

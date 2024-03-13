@@ -1,0 +1,25 @@
+version: "3.7"
+
+networks:
+  aftercinema-api:
+    name: aftercinema-api
+  traefik-lgna-sandbox:
+    name: traefik-lgna-sandbox
+
+services:
+  aftercinema-api:
+    image: gaspardcothiasfaure/aftercinema-api:1.0
+    container_name: aftercinema-api
+    restart: always
+    networks:
+      - aftercinema-api
+      - traefik-lgna-sandbox
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.aftercinema-api.rule=Host(`api.aftercinema.fr`)"
+      - "traefik.http.routers.aftercinema-api.entrypoints=websecure"
+      - "traefik.http.routers.aftercinema-api.tls.certresolver=aftercinema-api-resolver"
+    volumes:
+      - ./db:/db
+    environment:
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}

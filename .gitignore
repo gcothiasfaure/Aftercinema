@@ -3,3 +3,4 @@ logo
 .venv
 __pycache__
 .env
+database.db

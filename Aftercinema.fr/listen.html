@@ -222,15 +222,15 @@
 				</div>
 				<div id="bell-popup-content">
 					<p id="toast-bell-popup-content">Envoyé!</p>
-					<div id="form">
+					<form id="form">
 						<p>
 							Pour recevoir les dernières nouvelles d'<span id="span-bold"
 								>Aftercinema</span
 							>, rentre ton email ici:
 						</p>
-						<input type="text" id="email-input" />
-						<button type="button" id="enter-email">GO!</button>
-					</div>
+						<input type="email" id="email-input" required />
+						<input type="submit" value="GO!" />
+					</form>
 				</div>
 				<div id="mail-popup-content">
 					<p>
@@ -244,7 +244,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="./listen.js"></script>
 	</body>
 </html>

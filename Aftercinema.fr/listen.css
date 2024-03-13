@@ -30,6 +30,11 @@ svg {
 	width: 30vh;
 	height: 30vh;
 }
+#logo-container {
+	padding-top: 55px;
+	display: flex;
+	justify-content: center;
+}
 
 /* Icones du haut */
 
@@ -76,11 +81,6 @@ svg {
 }
 #platforms-container {
 	margin-top: 4vh;
-	display: flex;
-	justify-content: center;
-}
-#logo-container {
-	padding-top: 55px;
 	display: flex;
 	justify-content: center;
 }

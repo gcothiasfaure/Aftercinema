@@ -18,9 +18,9 @@ jobs:
       - name: Copy files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          password: ${{ secrets.VPS_PASSWORD }}
+          server: ${{ secrets.WEB_HOSTING_HOST }}
+          username: ${{ secrets.WEB_HOSTING_USERNAME }}
+          password: ${{ secrets.WEB_HOSTING_PASSWORD }}
           protocol: ftp
           port: 21
           server-dir: /www/
