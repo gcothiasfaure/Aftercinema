@@ -6,3 +6,5 @@ RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NE,L,R]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)/?$ /$1.html  [L]
+
+Header set Access-Control-Allow-Origin "*"
