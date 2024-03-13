@@ -10,8 +10,10 @@
 
 ```
 cd api/app/source-code
+python -m venv .venv
+.venv/Scripts/Activate.ps1
 pip install -r requirements.txt
-uvicorn main:app
+uvicorn main:app --reload
 ```
 
 ### prod

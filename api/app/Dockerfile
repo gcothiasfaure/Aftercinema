@@ -4,6 +4,8 @@ WORKDIR /source-code
 
 COPY ./source-code .
 
+RUN mkdir /db
+
 RUN pip install -r requirements.txt
 
 EXPOSE 80
