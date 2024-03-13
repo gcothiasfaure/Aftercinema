@@ -101,7 +101,7 @@ async function submitForm(event) {
 	}, 3000);
 
 	const response = await fetch(
-		"http://127.0.0.1:8000/store-email?email=" + emailValue
+		"https://api.aftercinema.fr/store-email?email=" + emailValue
 	);
 	const responseMsg = await response.json();
 	console.log(responseMsg);
