@@ -20,12 +20,12 @@ app.add_middleware(
 
 sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
 
-conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..","..","db", "database.db"))
+conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","db", "database.db"))
 cur = conn.cursor()
 
 @app.get("/")
 async def hello():
-    return {"Hello":"Worlds"}
+    return {"Hello":"World I like u"}
 
 @app.get("/store-email")
 async def store_email(email :str):

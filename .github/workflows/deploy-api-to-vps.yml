@@ -49,6 +49,17 @@ jobs:
           overwrite: true
           strip_components: 1
 
+      - name: Copy files into VPS (3)
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "api/Dockerfile"
+          target: "/home/debian/lgna-sandbox/aftercinema-api"
+          overwrite: true
+          strip_components: 1
+
       - name: Pull aftercinema-api Docker image and launch docker-compose.yml
         uses: appleboy/ssh-action@master
         with:
@@ -56,7 +67,6 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            cd api
-            docker build -t gaspardcothiasfaure/aftercinema-api:1.0 -f /home/debian/lgna-sandbox/aftercinema-api/app/Dockerfile
+            docker build -t gaspardcothiasfaure/aftercinema-api:1.0 -f /home/debian/lgna-sandbox/aftercinema-api/Dockerfile /home/debian/lgna-sandbox/aftercinema-api
             docker push gaspardcothiasfaure/aftercinema-api:1.0
             docker-compose -f /home/debian/lgna-sandbox/aftercinema-api/docker-compose.yml --env-file /home/debian/lgna-sandbox/aftercinema-api/.env up -d
