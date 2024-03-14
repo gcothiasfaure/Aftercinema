@@ -20,6 +20,6 @@ services:
       - "traefik.http.routers.aftercinema-api.entrypoints=websecure"
       - "traefik.http.routers.aftercinema-api.tls.certresolver=aftercinema-api-resolver"
     volumes:
-      - ./db:/db
+      - ./db:/aftercinema-api/db
     environment:
       - SENDGRID_API_KEY=${SENDGRID_API_KEY}

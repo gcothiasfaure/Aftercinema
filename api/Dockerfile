@@ -1,10 +1,10 @@
 FROM python:3.8
 
-COPY ../db /db
+COPY ./app /aftercinema-api/app
 
-WORKDIR /source-code
+COPY ./db /aftercinema-api/db
 
-COPY ./source-code .
+WORKDIR /aftercinema-api/app
 
 RUN pip install -r requirements.txt
 
