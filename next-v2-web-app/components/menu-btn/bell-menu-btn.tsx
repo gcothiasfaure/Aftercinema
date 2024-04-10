@@ -76,7 +76,7 @@ export default function BellMenuBtn() {
 			form.reset();
 			setShowSendMessage(false);
 		}
-	}, [dialogOpen]);
+	}, [dialogOpen, form]);
 
 	return (
 		<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
