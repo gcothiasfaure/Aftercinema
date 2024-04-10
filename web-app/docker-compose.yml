@@ -1,0 +1,21 @@
+version: "3.7"
+
+networks:
+  aftercinema-api:
+    name: aftercinema-web-app
+  traefik-lgna-sandbox:
+    name: traefik-lgna-sandbox
+
+services:
+  aftercinema-web-app:
+    image: gaspardcothiasfaure/aftercinema-web-app:1.0
+    container_name: aftercinema-web-app
+    restart: always
+    networks:
+      - aftercinema-web-app
+      - traefik-lgna-sandbox
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.aftercinema-web-app.rule=Host(`aftercinema.fr`,`www.aftercinema.fr`)"
+      - "traefik.http.routers.aftercinema-web-app.entrypoints=websecure"
+      - "traefik.http.routers.aftercinema-web-app.tls.certresolver=aftercinema-web-app-resolver"
