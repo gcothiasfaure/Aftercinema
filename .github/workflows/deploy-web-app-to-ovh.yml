@@ -3,7 +3,7 @@ name: deploy-web-app-to-ovh
 on:
   push:
     branches:
-      - main
+      - not-exist
     paths:
       - "web-app/**"
 
