@@ -1,0 +1,10 @@
+.imgContainer {
+	width: 30vh;
+	height: 30vh;
+	position: relative;
+}
+.logoContainer {
+	padding-top: 55px;
+	display: flex;
+	justify-content: center;
+}

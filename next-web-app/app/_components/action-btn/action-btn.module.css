@@ -1,0 +1,31 @@
+.actionBtn {
+	width: fit-content;
+	border: 3px black solid;
+	border-radius: 10px;
+	margin: auto;
+	margin-top: 70px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: black;
+}
+
+.actionBtn a {
+	text-decoration: none;
+	color: white;
+}
+
+.actionBtn:hover {
+	cursor: pointer;
+	background-color: white;
+}
+
+.actionBtn:hover a {
+	color: black;
+}
+
+.actionBtn p {
+	font-size: x-large;
+	font-weight: bold;
+}
