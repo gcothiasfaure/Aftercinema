@@ -50,7 +50,7 @@ export default function BellMenuBtn() {
 	});
 
 	async function onSubmit(values: Input) {
-		await fetch("http://localhost:3000/api/store-email?email=" + values.email);
+		await fetch("/api/store-email?email=" + values.email);
 		setShowSendMessage(true);
 		form.reset();
 	}
