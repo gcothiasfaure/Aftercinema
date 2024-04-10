@@ -1,7 +1,7 @@
 version: "3.7"
 
 networks:
-  aftercinema-api:
+  aftercinema-web-app:
     name: aftercinema-web-app
   traefik-lgna-sandbox:
     name: traefik-lgna-sandbox
