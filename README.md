@@ -1,7 +1,7 @@
 # Aftercinema
 
 <p align="center">
-<img src="web-app/assets/logos/logo500x500px.png" width="250" height="250" />
+<img src="web-app/public/logos/logo500x500px.png" width="250" height="250" />
 </p>
 
 ## api
@@ -9,7 +9,7 @@
 ### local
 
 ```
-cd api/app/source-code
+cd api/app
 python -m venv .venv
 .venv/Scripts/Activate.ps1
 pip install -r requirements.txt
@@ -18,7 +18,7 @@ uvicorn main:app --reload
 
 ### prod
 
-Copié sur le VPS et docker-compose lancé via [.github\workflows\deploy-api-to-vps.yml](.github\workflows\deploy-api-to-vps.yml).
+Le dossier **api** est copié sur le VPS puis le docker-compose.yml lancé via [.github\workflows\deploy-api-to-vps.yml](.github\workflows\deploy-api-to-vps.yml).
 
 Publié à [api.aftercinema.fr](https://api.aftercinema.fr).
 
@@ -26,8 +26,14 @@ Publié à [api.aftercinema.fr](https://api.aftercinema.fr).
 
 ### local
 
-Lancer le **Live Server** via VS Code sur la page HTML.
+```
+cd web-app
+npm install
+npm run dev
+```
 
 ### prod
+
+Le docker-compose.yml est copié sur le VPS puis lancé via [.github\workflows\deploy-web-app-to-vps.yml](.github\workflows\deploy-web-app-to-vps.yml)
 
 Publié à [aftercinema.fr](https://aftercinema.fr).
