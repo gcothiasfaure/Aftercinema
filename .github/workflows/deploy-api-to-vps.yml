@@ -3,7 +3,7 @@ name: deploy-api-to-vps
 on:
   push:
     branches:
-      - main
+      - not-exist
     paths:
       - "api/**"
 
