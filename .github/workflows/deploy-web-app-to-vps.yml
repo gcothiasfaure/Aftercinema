@@ -24,8 +24,8 @@ jobs:
       - name: Build and push aftercinema-web-app Docker image into Docker Hub
         run: |
           cd web-app
-          docker build -t gaspardcothiasfaure/aftercinema-web-app:1.0 .
-          docker push gaspardcothiasfaure/aftercinema-web-app:1.0
+          docker build -t gaspardcothiasfaure/aftercinema-web-app:1.1 .
+          docker push gaspardcothiasfaure/aftercinema-web-app:1.1
 
       - name: Copy files into VPS
         uses: appleboy/scp-action@v0.1.4
@@ -45,5 +45,5 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            docker pull gaspardcothiasfaure/aftercinema-web-app:1.0
+            docker pull gaspardcothiasfaure/aftercinema-web-app:1.1
             docker-compose -f /home/debian/lgna-sandbox/aftercinema-web-app/docker-compose.yml up -d

@@ -45,7 +45,7 @@ export default function PlatformBtn({
 	};
 	return (
 		<a href={getUrl()} target="_blank">
-			<div className="group p-1 w-[90vw] sm:w-96 bg-black text-white rounded border border-black cursor-pointer transition-colors duration-300 hover:bg-white hover:text-black hover:border hover:border-black">
+			<div className="p-1 w-[90vw] sm:w-96 bg-primary text-white rounded-md cursor-pointer transition-colors hover:bg-primary/90 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
 				<div className="grid grid-cols-[auto_1fr] gap-2">
 					<div className="relative h-12 w-12 rounded">
 						<Image
