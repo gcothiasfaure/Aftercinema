@@ -81,7 +81,7 @@ export default function BellMenuBtn() {
 		<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
 			<DialogTrigger
 				onClick={() => {
-					posthog.capture("Menu button clicked", { $type: "share" });
+					posthog.capture("Menu button clicked", { $type: "Bell" });
 				}}
 			>
 				<Icon iconLabel="bell" />

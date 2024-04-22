@@ -47,7 +47,7 @@ export default function ShareMenuBtn() {
 		<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
 			<DialogTrigger
 				onClick={() => {
-					posthog.capture("Menu button clicked", { $type: "share" });
+					posthog.capture("Menu button clicked", { $type: "Share" });
 				}}
 			>
 				<Icon iconLabel="share" />
