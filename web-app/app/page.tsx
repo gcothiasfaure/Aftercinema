@@ -1,12 +1,12 @@
-import LogoContainer from "@/components/logo-container";
-import ActionBtn from "@/components/action-btn";
-
 import Image from "next/image";
+
 import sneha from "@/public/podcasters/sneha.png";
 import walid from "@/public/podcasters/walid.png";
 import nina from "@/public/podcasters/nina.png";
 import gaspard from "@/public/podcasters/gaspard.png";
 
+import LogoContainer from "@/components/logo-container";
+import ActionBtn from "@/components/action-btn";
 import EmailMenuBtn from "@/components/menu-btn/email-menu-btn";
 import ShareMenuBtn from "@/components/menu-btn/share-menu-btn";
 import BellMenuBtn from "@/components/menu-btn/bell-menu-btn";

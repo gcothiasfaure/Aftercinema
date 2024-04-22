@@ -1,4 +1,9 @@
+"use client";
+
 import Image from "next/image";
+
+import { usePostHog } from "posthog-js/react";
+
 import logo500x500pxwhitebg from "@/public/logos/logo500x500pxwhitebg.png";
 import spotifyLogo from "@/public/platforms/spotify.png";
 import deezerLogo from "@/public/platforms/deezer.png";
@@ -11,6 +16,8 @@ export default function PlatformBtn({
 }: {
 	platformLabel: string;
 }) {
+	const posthog = usePostHog();
+
 	const getUrl = () => {
 		if (platformLabel === "Spotify") {
 			return "https://open.spotify.com/show/2KOkfi3CO92Rn03JK0CvIg";
@@ -27,6 +34,7 @@ export default function PlatformBtn({
 			return "https://podcasts.apple.com/fr/podcast/aftercinema/id1736993975";
 		}
 	};
+
 	const getImg = () => {
 		if (platformLabel === "Spotify") {
 			return spotifyLogo;
@@ -43,8 +51,17 @@ export default function PlatformBtn({
 			return applePodcastLogo;
 		}
 	};
+
 	return (
-		<a href={getUrl()} target="_blank">
+		<a
+			onClick={() => {
+				posthog.capture("Platform button clicked", {
+					$platform: platformLabel,
+				});
+			}}
+			href={getUrl()}
+			target="_blank"
+		>
 			<div className="p-1 w-[90vw] sm:w-96 bg-primary text-white rounded-md cursor-pointer transition-colors hover:bg-primary/90 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
 				<div className="grid grid-cols-[auto_1fr] gap-2">
 					<div className="relative h-12 w-12 rounded">
