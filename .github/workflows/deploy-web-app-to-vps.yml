@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           source: "web-app/docker-compose.yml"
-          target: "/home/debian/lgna-sandbox/aftercinema-web-app"
+          target: "/home/debian/lgna-sandbox/aftercinema/web-app"
           overwrite: true
           strip_components: 1
 
@@ -46,4 +46,4 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
             docker pull gaspardcothiasfaure/aftercinema-web-app:1.2
-            docker-compose -f /home/debian/lgna-sandbox/aftercinema-web-app/docker-compose.yml up -d
+            docker-compose -f /home/debian/lgna-sandbox/aftercinema/web-app/docker-compose.yml up -d
