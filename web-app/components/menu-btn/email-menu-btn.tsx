@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
+import { usePostHog } from "posthog-js/react";
 import { Copy } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -15,12 +16,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
 import Icon from "@/components/icon";
 
 export default function EmailMenuBtn() {
+	const posthog = usePostHog();
 	const [showCopyMessage, setShowCopyMessage] = useState<boolean>(false);
-
-	const [dialogOpen, setDialogOpen] = React.useState<boolean>(false);
+	const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (!dialogOpen) {
@@ -43,7 +45,11 @@ export default function EmailMenuBtn() {
 
 	return (
 		<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-			<DialogTrigger>
+			<DialogTrigger
+				onClick={() => {
+					posthog.capture("Menu button clicked", { $type: "Email" });
+				}}
+			>
 				<Icon iconLabel="email" />
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-md">

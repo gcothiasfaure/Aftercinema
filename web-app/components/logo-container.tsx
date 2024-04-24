@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import logo from "@/public/logos/logo500x500px.png";
 
 export default function LogoContainer() {

@@ -1,11 +1,22 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
 import Link from "next/link";
 
+import { usePostHog } from "posthog-js/react";
 import { Headphones } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+
 export default function ActionBtn() {
+	const posthog = usePostHog();
+
 	return (
-		<Link href="/listen">
+		<Link
+			href="/listen"
+			onClick={() => {
+				posthog.capture("Action button clicked");
+			}}
+		>
 			<Button size="lg" variant="action">
 				Écoute Aftercinema !
 				<Headphones

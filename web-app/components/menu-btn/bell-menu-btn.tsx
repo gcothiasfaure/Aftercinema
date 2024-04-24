@@ -1,19 +1,12 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
+import { usePostHog } from "posthog-js/react";
 import { useForm } from "react-hook-form";
-
 import { z } from "zod";
-
-const formSchema = z.object({
-	email: z
-		.string()
-		.min(1, { message: "L'email doit être rempli." })
-		.email("Ceci n'est pas un email valide."),
-});
-
-import React, { useState, useEffect } from "react";
-
 import { SendHorizontal } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
 	Form,
@@ -22,7 +15,6 @@ import {
 	FormItem,
 	FormMessage,
 } from "@/components/ui/form";
-
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -33,15 +25,25 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+
 import Icon from "@/components/icon";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+const formSchema = z.object({
+	email: z
+		.string()
+		.min(1, { message: "L'email doit être rempli." })
+		.email("Ceci n'est pas un email valide."),
+});
 
 type Input = {
 	email: string;
 };
 
 export default function BellMenuBtn() {
+	const posthog = usePostHog();
+	const [showSendMessage, setShowSendMessage] = useState<boolean>(false);
+	const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -54,9 +56,6 @@ export default function BellMenuBtn() {
 		setShowSendMessage(true);
 		form.reset();
 	}
-
-	const [showSendMessage, setShowSendMessage] = useState<boolean>(false);
-	const [dialogOpen, setDialogOpen] = React.useState<boolean>(false);
 
 	useEffect(() => {
 		let timeoutId: NodeJS.Timeout;
@@ -80,7 +79,11 @@ export default function BellMenuBtn() {
 
 	return (
 		<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-			<DialogTrigger>
+			<DialogTrigger
+				onClick={() => {
+					posthog.capture("Menu button clicked", { $type: "Bell" });
+				}}
+			>
 				<Icon iconLabel="bell" />
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-md">

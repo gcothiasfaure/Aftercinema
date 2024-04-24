@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
+
 import { cn } from "@/lib/utils";
+import { PHProvider } from "./providers";
 
 const myFont = localFont({
 	src: "../public/Geist-Regular.otf",
@@ -29,15 +31,17 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="fr">
-			<body
-				suppressHydrationWarning
-				className={cn(
-					"min-h-screen bg-background font-sans antialiased",
-					myFont.variable
-				)}
-			>
-				{children}
-			</body>
+			<PHProvider>
+				<body
+					suppressHydrationWarning
+					className={cn(
+						"min-h-screen bg-background font-sans antialiased",
+						myFont.variable
+					)}
+				>
+					{children}
+				</body>
+			</PHProvider>
 		</html>
 	);
 }
