@@ -8,7 +8,7 @@ networks:
 
 services:
   aftercinema-web-app:
-    image: gaspardcothiasfaure/aftercinema-web-app:1.1
+    image: gaspardcothiasfaure/aftercinema-web-app:1.2
     container_name: aftercinema-web-app
     restart: always
     networks:
