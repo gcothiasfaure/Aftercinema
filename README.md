@@ -9,16 +9,16 @@
 ### local
 
 ```
-cd api/app
+cd api
 python -m venv .venv
 .venv/Scripts/Activate.ps1
 pip install -r requirements.txt
+$Env:SENDGRID_API_KEY = 'XXX'
+$Env:POSTGRESQL_CONN_STRING = 'XXX'
 uvicorn main:app --reload
 ```
 
 ### prod
-
-Le dossier **api** est copié sur le VPS puis le docker-compose.yml lancé via [.github\workflows\deploy-api-to-vps.yml](.github\workflows\deploy-api-to-vps.yml).
 
 Publié à [api.aftercinema.fr](https://api.aftercinema.fr).
 
@@ -33,7 +33,5 @@ npm run dev
 ```
 
 ### prod
-
-Le docker-compose.yml est copié sur le VPS puis lancé via [.github\workflows\deploy-web-app-to-vps.yml](.github\workflows\deploy-web-app-to-vps.yml)
 
 Publié à [aftercinema.fr](https://aftercinema.fr).
