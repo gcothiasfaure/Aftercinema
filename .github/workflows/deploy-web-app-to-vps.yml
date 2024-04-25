@@ -1,4 +1,4 @@
-name: deploy-web-app-to-ovh
+name: deploy-web-app-to-vps
 
 on:
   push:
@@ -27,16 +27,15 @@ jobs:
           docker build --build-arg NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.WEB_APP_ENV_NEXT_PUBLIC_POSTHOG_HOST }} --build-arg NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.WEB_APP_ENV_NEXT_PUBLIC_POSTHOG_KEY }} -t gaspardcothiasfaure/aftercinema-web-app:1.2 .
           docker push gaspardcothiasfaure/aftercinema-web-app:1.2
 
-      - name: Copy files into VPS
+      - name: Copy docker-compose.yml VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
-          source: "web-app/docker-compose.yml"
-          target: "/home/debian/lgna-sandbox/aftercinema-web-app"
+          source: "docker-compose.yml"
+          target: "/home/debian/lgna-sandbox/aftercinema"
           overwrite: true
-          strip_components: 1
 
       - name: Pull aftercinema-web-app Docker image and launch docker-compose.yml
         uses: appleboy/ssh-action@master
@@ -46,4 +45,4 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
             docker pull gaspardcothiasfaure/aftercinema-web-app:1.2
-            docker-compose -f /home/debian/lgna-sandbox/aftercinema-web-app/docker-compose.yml up -d
+            docker-compose -f /home/debian/lgna-sandbox/aftercinema/web-app/docker-compose.yml up -d
