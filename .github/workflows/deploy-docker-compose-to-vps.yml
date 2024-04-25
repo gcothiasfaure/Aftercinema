@@ -1,0 +1,26 @@
+name: deploy-docker-compose-to-vps
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docker-compose.yml"
+
+jobs:
+  deploy-api-to-vps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Copy docker-compose.yml to VPS
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "docker-compose.yml"
+          target: "/home/debian/lgna-sandbox/aftercinema"
+          overwrite: true

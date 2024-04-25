@@ -27,16 +27,6 @@ jobs:
           docker build -t gaspardcothiasfaure/aftercinema-api:1.1 .
           docker push gaspardcothiasfaure/aftercinema-api:1.1
 
-      - name: Copy docker-compose.yml VPS
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          source: "docker-compose.yml"
-          target: "/home/debian/lgna-sandbox/aftercinema"
-          overwrite: true
-
       - name: Pull aftercinema-api Docker image and launch docker-compose.yml
         uses: appleboy/ssh-action@master
         with:
