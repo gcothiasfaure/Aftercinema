@@ -1,0 +1,56 @@
+version: "3.7"
+
+networks:
+  aftercinema-web-app:
+    name: aftercinema-web-app
+  aftercinema-api:
+    name: aftercinema-api
+  traefik-lgna-sandbox:
+    name: traefik-lgna-sandbox
+
+services:
+  aftercinema-api-db:
+    restart: always
+    image: postgres:latest
+    container_name: aftercinema-api-db
+    networks:
+      - aftercinema-api
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./api-db-data:/var/lib/postgresql/data
+
+  aftercinema-api:
+    depends_on:
+      - aftercinema-api-db
+    restart: always
+    image: gaspardcothiasfaure/aftercinema-api:1.1
+    container_name: aftercinema-api
+    networks:
+      - aftercinema-api
+      - traefik-lgna-sandbox
+    environment:
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - POSTGRESQL_CONN_STRING=${POSTGRESQL_CONN_STRING}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.aftercinema-api.rule=Host(`api.aftercinema.fr`)"
+      - "traefik.http.routers.aftercinema-api.entrypoints=websecure"
+      - "traefik.http.routers.aftercinema-api.tls.certresolver=aftercinema-api-resolver"
+
+  aftercinema-web-app:
+    depends_on:
+      - aftercinema-api
+    restart: always
+    image: gaspardcothiasfaure/aftercinema-web-app:1.2
+    container_name: aftercinema-web-app
+    networks:
+      - aftercinema-web-app
+      - traefik-lgna-sandbox
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.aftercinema-web-app.rule=Host(`aftercinema.fr`,`www.aftercinema.fr`)"
+      - "traefik.http.routers.aftercinema-web-app.entrypoints=websecure"
+      - "traefik.http.routers.aftercinema-web-app.tls.certresolver=aftercinema-web-app-resolver"
