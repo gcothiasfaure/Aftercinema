@@ -24,6 +24,7 @@ services:
     ports:
       - "5432:5432"
 
+
   aftercinema-api:
     depends_on:
       - aftercinema-api-db
