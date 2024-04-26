@@ -24,3 +24,12 @@ jobs:
           source: "docker-compose.yml"
           target: "/home/debian/lgna-sandbox/aftercinema"
           overwrite: true
+      
+      - name: Launch docker-compose.yml
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            docker-compose -f /home/debian/lgna-sandbox/aftercinema/docker-compose.yml up -d

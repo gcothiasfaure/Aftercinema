@@ -35,4 +35,4 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
             docker pull gaspardcothiasfaure/aftercinema-web-app:1.2
-            docker-compose -f /home/debian/lgna-sandbox/aftercinema/web-app/docker-compose.yml up -d
+            docker-compose -f /home/debian/lgna-sandbox/aftercinema/docker-compose.yml up -d
