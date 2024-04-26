@@ -32,4 +32,4 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            docker-compose -f /home/debian/lgna-sandbox/aftercinema/docker-compose.yml up -d
+            docker-compose -f /home/debian/lgna-sandbox/aftercinema/docker-compose.yml --env-file /home/debian/lgna-sandbox/aftercinema/.env up -d
