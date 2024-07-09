@@ -13,8 +13,8 @@ cd api
 python -m venv .venv
 .venv/Scripts/Activate.ps1
 pip install -r requirements.txt
-$Env:SENDGRID_API_KEY = 'XXX'
-$Env:POSTGRESQL_CONN_STRING = 'XXX'
+$Env:POSTHOG_API_KEY='XXX'
+$Env:POSTGRESQL_CONN_STRING='XXX'
 uvicorn main:app --reload
 ```
 
