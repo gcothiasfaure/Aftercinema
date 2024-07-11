@@ -22,7 +22,7 @@ pip install -r requirements.txt
 $Env:POSTGRESQL_CONN_STRING='XXX'
 uvicorn main:app --reload
 ```
-Où *XXX* est la châine de connexion à la base PostgreSQL [disponible ici](https://www.notion.so/gas-perso/projets-ecd7b57cf1f14923905b834e808d904a?pvs=4#c75f80609d4049da8dae52568b578191).
+Où *XXX* est la chaîne de connexion à la base PostgreSQL [disponible ici](https://www.notion.so/gas-perso/projets-ecd7b57cf1f14923905b834e808d904a?pvs=4#c75f80609d4049da8dae52568b578191).
 
 ### prod
 
