@@ -1,9 +1,6 @@
-sources
-logo
 .venv
 __pycache__
 .env
-database.db
 next-env.d.ts
 node_modules
 .next
