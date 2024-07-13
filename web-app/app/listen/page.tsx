@@ -1,5 +1,5 @@
 import LogoContainer from "@/components/logo-container";
-import BellMenuBtn from "@/components/menu-btn/bell-menu-btn";
+import ChartMenuBtn from "@/components/menu-btn/chart-menu-btn";
 import EmailMenuBtn from "@/components/menu-btn/email-menu-btn";
 import HomeMenuBtn from "@/components/menu-btn/home-menu-btn";
 import ShareMenuBtn from "@/components/menu-btn/share-menu-btn";
@@ -14,15 +14,15 @@ export default function Listen() {
 						<HomeMenuBtn />
 					</div>
 					<div className="flex">
-						<div className="mr-2">
-							<EmailMenuBtn />
-						</div>
-						<div className="mr-2">
-							<BellMenuBtn />
-						</div>
-						<div>
-							<ShareMenuBtn />
-						</div>
+					<div className="mr-2">
+						<ChartMenuBtn />
+					</div>
+					<div className="mr-2">
+						<EmailMenuBtn />
+					</div>
+					<div>
+						<ShareMenuBtn />
+					</div>
 					</div>
 				</div>
 			</div>

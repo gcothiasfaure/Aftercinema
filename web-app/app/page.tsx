@@ -9,7 +9,7 @@ import LogoContainer from "@/components/logo-container";
 import ActionBtn from "@/components/action-btn";
 import EmailMenuBtn from "@/components/menu-btn/email-menu-btn";
 import ShareMenuBtn from "@/components/menu-btn/share-menu-btn";
-import BellMenuBtn from "@/components/menu-btn/bell-menu-btn";
+import ChartMenuBtn from "@/components/menu-btn/chart-menu-btn";
 
 export default function Home() {
 	return (
@@ -17,15 +17,15 @@ export default function Home() {
 			<div className="fixed top-0 w-[100vw] z-50">
 				<div className="flex justify-end m-2 max-w-screen-sm mx-2 sm:mx-auto">
 					<div className="flex">
-						<div className="mr-2">
-							<EmailMenuBtn />
-						</div>
-						<div className="mr-2">
-							<BellMenuBtn />
-						</div>
-						<div>
-							<ShareMenuBtn />
-						</div>
+					<div className="mr-2">
+						<ChartMenuBtn />
+					</div>
+					<div className="mr-2">
+						<EmailMenuBtn />
+					</div>
+					<div>
+						<ShareMenuBtn />
+					</div>
 					</div>
 				</div>
 			</div>

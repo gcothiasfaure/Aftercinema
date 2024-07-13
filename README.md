@@ -4,7 +4,7 @@
 <img src="web-app/public/logos/logo500x500px.png" width="250" height="250" />
 </p>
 
-Ce dépôt contient le code source du site web vitrine du podcast Aftercinema ([/web-app](/web-app)). Sa *stack* technique est la suivante : TypeScript, React, NextJS.
+Ce dépôt contient le code source du site web vitrine du podcast Aftercinema ([/web-app](/web-app)). Sa *stack* technique est la suivante : TypeScript, React, NextJS, PostHog.
 
 Il contient également l'API d'Aftercinema, qui sert à rendre accessible en ligne pour le site web les données statistques du podcast ([/api](/api)). Sa *stack* technique est la suivante : Python, FastAPI.
 
@@ -37,6 +37,8 @@ cd web-app
 npm install
 npm run dev
 ```
+
+La console affiche une erreur relative à PostHog, car les variables d'environnements *NEXT_PUBLIC_POSTHOG_HOST* et *NEXT_PUBLIC_POSTHOG_KEY* ne sont pas définies. Aucune utilité d'envoyer des informations à PostHog en dev.
 
 ### prod
 
