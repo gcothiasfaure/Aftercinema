@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { usePostHog } from "posthog-js/react";
 
-import logo500x500pxwhitebg from "@/public/logos/logo500x500pxwhitebg.png";
+import logo500x500pxwhitebg from "@/public/logos/logo500x500pxbeigebg.png";
 import spotifyLogo from "@/public/platforms/spotify.png";
 import deezerLogo from "@/public/platforms/deezer.png";
 import youtubeLogo from "@/public/platforms/youtube.png";
