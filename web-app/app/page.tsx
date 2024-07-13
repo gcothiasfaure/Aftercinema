@@ -11,9 +11,11 @@ import EmailMenuBtn from "@/components/menu-btn/email-menu-btn";
 import ShareMenuBtn from "@/components/menu-btn/share-menu-btn";
 import ChartMenuBtn from "@/components/menu-btn/chart-menu-btn";
 
+import Link from "next/link";
+
 export default function Home() {
 	return (
-		<div className="bg-gradient-to-t from-backgroundbottom to-white pb-24">
+		<div className="bg-gradient-to-t from-backgroundbottom to-white pb-2">
 			<div className="fixed top-0 w-[100vw] z-50">
 				<div className="flex justify-end m-2 max-w-screen-sm mx-2 sm:mx-auto">
 					<div className="flex">
@@ -120,8 +122,11 @@ export default function Home() {
 					</h2>
 					<p>C'est tous les mois sur ta plateforme de podcast !</p>
 				</div>
-				<div className="flex justify-center mt-16 mb-8">
+				<div className="flex justify-center mt-16 mb-16">
 					<ActionBtn />
+				</div>
+				<div className="text-end">
+					<Link href="/legal" className="underline text-sm">Mentions légales</Link>
 				</div>
 			</div>
 		</div>
