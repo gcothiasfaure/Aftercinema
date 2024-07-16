@@ -14,12 +14,25 @@ Pour rendre accessible ces données statistiques, un Notebook Python récupère 
 
 ### local
 
+#### MACOS
+
 ```
 cd api
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 export POSTGRESQL_CONN_STRING=XXX
+uvicorn main:app --reload
+```
+
+#### WINDOWS
+
+```
+cd api
+python -m venv .venv
+.venv/Scripts/Activate.ps1
+pip install -r requirements.txt
+$Env:POSTGRESQL_CONN_STRING = 'XXX'
 uvicorn main:app --reload
 ```
 
