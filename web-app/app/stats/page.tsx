@@ -1,3 +1,5 @@
+import CustomChart from "@/components/chart";
+
 const fetchData = async () => {
   try {
     const res = await fetch("http://127.0.0.1:8000/get-stats-data");
@@ -31,6 +33,9 @@ export default async function Stats() {
       <div>
         <h2>Composant 2</h2>
         {data["PostHog - Platform button clicked"].store_date}
+      </div>
+      <div className="min-h-[300px]">
+        <CustomChart data={data["PostHog - Page viewed"].data} />
       </div>
     </div>
   );
