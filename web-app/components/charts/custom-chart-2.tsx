@@ -23,27 +23,35 @@ const chartConfig = {
   count: {
     label: "Nb clics",
   },
-  chrome: {
+  apple_podcast: {
     label: "Apple Podcast",
-    color: "hsl(var(--chart-1))",
+    color: "#ffb7b8",
   },
-  safari: {
+  youtube: {
     label: "YouTube",
-    color: "hsl(var(--chart-2))",
+    color: "#ff9693",
   },
-  Deezer: {
+  deezer: {
     label: "Deezer",
-    color: "hsl(var(--chart-3))",
+    color: "#ff746a",
   },
-  edge: {
+  spotify: {
     label: "Spotify",
-    color: "hsl(var(--chart-4))",
+    color: "#fb4f3e",
   },
-  other: {
+  instagram: {
     label: "Instagram",
-    color: "hsl(var(--chart-5))",
+    color: "#ee2101",
   },
 } satisfies ChartConfig;
+
+const addFillProperty = (data: any) => {
+  data.forEach((item: any) => {
+    item.fill = "var(--color-" + item.platform + ")";
+  });
+  console.log(data);
+  return data;
+};
 
 export default function CustomChart2({ data }: { data: any }) {
   const [deviceSelected, setDeviceSelected] = useState("Tout appareil");
@@ -52,13 +60,13 @@ export default function CustomChart2({ data }: { data: any }) {
     <div>
       <div className="flex items-center">
         <div className="mr-20">
-          <p className="text-lg font-bold">Nombre de visites</p>
+          <p className="text-lg font-bold">Nombre de clics</p>
           <p className="text-sm">
-            Evolution mensuelle du nombre de visites d'
+            Nombre de clics total sur les boutons de plateforme sur{" "}
             <span className="underline underline-offset-1">
-              aftercinema.fr
-            </span>{" "}
-            selon la page et selon l'appareil.
+              aftercinema.fr/listen
+            </span>
+            , selon l'appareil.
           </p>
         </div>
 
@@ -86,21 +94,23 @@ export default function CustomChart2({ data }: { data: any }) {
       </div>
       <ChartContainer
         config={chartConfig}
-        className="mx-auto aspect-square max-h-[250px]"
+        className="mx-auto aspect-square max-h-[250px] [&_.recharts-pie-label-text]:mb-3 [&_.recharts-pie-label-text]:fill-foreground"
       >
         <PieChart>
-          <ChartTooltip
-            content={<ChartTooltipContent nameKey="count" hideLabel />}
-          />
-          <Pie data={data[deviceSelected]} dataKey="count">
+          <Pie
+            data={addFillProperty(data[deviceSelected])}
+            label
+            dataKey="count"
+            nameKey="platform"
+          >
             <LabelList
               dataKey="platform"
               className="fill-background"
               stroke="none"
               fontSize={12}
-              // formatter={(value: keyof typeof chartConfig) =>
-              //   chartConfig[value]?.label
-              // }
+              formatter={(value: keyof typeof chartConfig) =>
+                chartConfig[value]?.label
+              }
             />
           </Pie>
         </PieChart>
