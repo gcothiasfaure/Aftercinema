@@ -4,10 +4,23 @@ import EmailMenuBtn from "@/components/menu-btn/email-menu-btn";
 import ShareMenuBtn from "@/components/menu-btn/share-menu-btn";
 import HomeMenuBtn from "@/components/menu-btn/home-menu-btn";
 
+import { MoveUpRight } from "lucide-react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 import CustomChart1 from "@/components/charts/custom-chart-1";
 import CustomChart2 from "@/components/charts/custom-chart-2";
+import CustomChart3 from "@/components/charts/custom-chart-3";
+import CustomChart4 from "@/components/charts/custom-chart-4";
+import CustomChart5 from "@/components/charts/custom-chart-5";
 
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 const fetchData = async () => {
   try {
@@ -93,7 +106,7 @@ export default async function Stats() {
       </div>
       <LogoContainer />
       <div className="max-w-screen-sm sm:mx-auto mx-2">
-        <div className="mt-10 mb-14">
+        <div className="mt-10 mb-3">
           <p className="text-lg">
             Bienvenue sur les statistiques d'
             <span className="font-bold">Aftercinema</span>!
@@ -103,14 +116,90 @@ export default async function Stats() {
             {formatDateTime(data["PostHog - Page viewed"].store_date)}.
           </p>
         </div>
+        <Accordion type="single" collapsible className="w-[200px] mb-3">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Table des matières</AccordionTrigger>
+            <AccordionContent>
+              <div>
+                <Link
+                  href="#nbr-visites"
+                  className="hover:underline decoration-h2color text-h2color"
+                >
+                  <div className="flex items-center">
+                    Nombre de visites
+                    <MoveUpRight width={15} height={15} className="ml-1" />
+                  </div>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="#nbr-clics"
+                  className="hover:underline decoration-h2color text-h2color"
+                >
+                  <div className="flex items-center">
+                    Nombre de clics
+                    <MoveUpRight width={15} height={15} className="ml-1" />
+                  </div>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="#donnees-youtube"
+                  className="hover:underline decoration-h2color text-h2color"
+                >
+                  <div className="flex items-center">
+                    Données YouTube
+                    <MoveUpRight width={15} height={15} className="ml-1" />
+                  </div>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="#donnees-instagram"
+                  className="hover:underline decoration-h2color text-h2color"
+                >
+                  <div className="flex items-center">
+                    Données Instagram
+                    <MoveUpRight width={15} height={15} className="ml-1" />
+                  </div>
+                </Link>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
-      <Separator className="w-[50px] mx-auto bg-black mb-5" />
+
+      <Separator
+        id="nbr-visites"
+        className="w-[50px] mx-auto bg-black mb-[50px]"
+      />
       <div className="max-w-screen-sm sm:mx-auto mx-2">
         <CustomChart1 data={data["PostHog - Page viewed"].data} />
       </div>
-      <Separator className="w-[50px] mx-auto bg-black mb-5 mt-10" />
+      <Separator
+        id="nbr-clics"
+        className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
+      />
       <div className="max-w-screen-sm sm:mx-auto mx-2">
         <CustomChart2 data={data["PostHog - Platform button clicked"].data} />
+      </div>
+      {/* <Separator className="w-[50px] mx-auto bg-black mb-[50px] mt-10" />
+      <div className="max-w-screen-sm sm:mx-auto mx-2">
+        <CustomChart3 data={data["PostHog - Page viewed"].data} />
+      </div> */}
+      <Separator
+        id="donnees-youtube"
+        className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
+      />
+      <div className="max-w-screen-sm sm:mx-auto mx-2">
+        <CustomChart4 data={data["YouTube"].data} />
+      </div>
+      <Separator
+        id="donnees-instagram"
+        className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
+      />
+      <div className="max-w-screen-sm sm:mx-auto mx-2">
+        <CustomChart5 data={data["Instagram"].data} />
       </div>
       <div className="flex justify-center mt-16 mb-16">
         <ActionBtn />

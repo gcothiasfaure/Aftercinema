@@ -2,6 +2,8 @@
 
 import { Bar, BarChart, CartesianGrid, XAxis, LabelList } from "recharts";
 
+import { Globe } from "lucide-react";
+
 import { useState } from "react";
 
 import {
@@ -35,9 +37,13 @@ export default function CustomChart1({ data }: { data: any }) {
 
   return (
     <div>
-      <div className="flex items-center">
-        <div className="mr-20">
-          <p className="text-lg font-bold">Nombre de visites</p>
+      <div className="flex items-center flex-col sm:flex-row">
+        <div className="sm:mr-20">
+          <div className="flex items-center">
+            <p className="text-lg font-bold">Nombre de visites</p>
+            <Globe width={20} height={20} className="ml-1" />
+          </div>
+
           <p className="text-sm">
             Evolution mensuelle du nombre de visites d'
             <span className="underline underline-offset-1">
@@ -47,7 +53,7 @@ export default function CustomChart1({ data }: { data: any }) {
           </p>
         </div>
 
-        <div className="bg-transparent">
+        <div className="mt-3 mb-3 sm:m-0">
           <Select value={deviceSelected} onValueChange={setDeviceSelected}>
             <SelectTrigger
               className="w-[160px] rounded-lg sm:ml-auto"
