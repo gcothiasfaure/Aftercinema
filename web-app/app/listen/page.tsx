@@ -42,7 +42,7 @@ export default function Listen() {
             <PlatformBtn platformLabel="YouTube" />
           </div>
           <div className="mt-4">
-            <PlatformBtn platformLabel="Apple Podcast" />
+            <PlatformBtn platformLabel="Apple Podcasts" />
           </div>
         </div>
       </div>

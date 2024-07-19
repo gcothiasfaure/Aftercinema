@@ -20,8 +20,8 @@ const chartConfig = {
   count: {
     label: "Nb clics",
   },
-  apple_podcast: {
-    label: "Apple Podcast",
+  apple_podcasts: {
+    label: "Apple Podcasts",
     color: "#ffb7b8",
   },
   youtube: {
