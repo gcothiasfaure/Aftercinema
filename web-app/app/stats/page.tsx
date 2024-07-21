@@ -163,7 +163,7 @@ export default async function Stats() {
       </div>
       <Separator
         id="nbr-visites"
-        className="w-[50px] mx-auto bg-black mb-[50px]"
+        className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
       />
       <div className="max-w-screen-sm sm:mx-auto mx-2">
         <PostHogPageViewedChart data={data["PostHog - Page viewed"].data} />
