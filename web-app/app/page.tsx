@@ -16,20 +16,14 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="bg-gradient-to-t from-backgroundbottom to-white pb-2">
-      <div className="fixed top-0 w-[100vw] z-50">
-        <div className="flex justify-end m-2 max-w-screen-sm mx-2 sm:mx-auto">
-          <div className="flex">
-            <div className="mr-2">
-              <ChartMenuBtn />
-            </div>
-            <div className="mr-2">
-              <EmailMenuBtn />
-            </div>
-            <div>
-              <ShareMenuBtn />
-            </div>
-          </div>
-        </div>
+      <div className="fixed top-0 right-[112px] z-50 mt-2 mr-2">
+        <ChartMenuBtn />
+      </div>
+      <div className="fixed top-0 right-0 z-50 mt-2 mr-2">
+        <EmailMenuBtn />
+      </div>
+      <div className="fixed top-0 right-[56px] z-50 mt-2 mr-2">
+        <ShareMenuBtn />
       </div>
       <LogoContainer />
       <div className="max-w-screen-sm sm:mx-auto mx-2">
