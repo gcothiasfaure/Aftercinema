@@ -7,7 +7,6 @@ import { Globe } from "lucide-react";
 import { useState } from "react";
 
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-
 import {
   Select,
   SelectContent,
@@ -49,17 +48,20 @@ const addFillProperty = (data: any) => {
   return data;
 };
 
-export default function CustomChart2({ data }: { data: any }) {
+export default function PostHogPlatfromButtonClickedChart({
+  data,
+}: {
+  data: any;
+}) {
   const [deviceSelected, setDeviceSelected] = useState("Tout appareil");
-
   return (
     <div>
-      <div className="flex items-center flex-col sm:flex-row">
+      <div className="flex items-center flex-col sm:flex-row mb-3">
         <div className="sm:mr-20">
-          <div className="flex items-center">
-            <p className="text-lg font-bold">Nombre de clics</p>
-            <Globe width={20} height={20} className="ml-1" />
-          </div>
+          <p className="text-lg font-bold">
+            Nombre de clics
+            <Globe width={20} height={20} className="ml-1 inline mb-[2px]" />
+          </p>
           <p className="text-sm">
             Nombre de clics total sur les boutons de plateforme sur{" "}
             <span className="underline underline-offset-1">
@@ -68,7 +70,6 @@ export default function CustomChart2({ data }: { data: any }) {
             , selon l'appareil.
           </p>
         </div>
-
         <div className="mt-3 mb-3 sm:m-0">
           <Select value={deviceSelected} onValueChange={setDeviceSelected}>
             <SelectTrigger
@@ -93,7 +94,7 @@ export default function CustomChart2({ data }: { data: any }) {
       </div>
       <ChartContainer
         config={chartConfig}
-        className="mx-auto aspect-square max-h-[250px] [&_.recharts-pie-label-text]:mb-3 [&_.recharts-pie-label-text]:fill-foreground"
+        className="mx-auto aspect-square h-[250px] [&_.recharts-pie-label-text]:mb-3 [&_.recharts-pie-label-text]:fill-foreground"
       >
         <PieChart>
           <Pie

@@ -12,7 +12,6 @@ import {
   ChartLegend,
   ChartLegendContent,
 } from "@/components/ui/chart";
-
 import {
   Select,
   SelectContent,
@@ -32,17 +31,16 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function CustomChart1({ data }: { data: any }) {
+export default function PostHogPageViewedChart({ data }: { data: any }) {
   const [deviceSelected, setDeviceSelected] = useState("Tout appareil");
-
   return (
     <div>
-      <div className="flex items-center flex-col sm:flex-row">
+      <div className="flex items-center flex-col sm:flex-row mb-3">
         <div className="sm:mr-20">
-          <div className="flex items-center">
-            <p className="text-lg font-bold">Nombre de visites</p>
-            <Globe width={20} height={20} className="ml-1" />
-          </div>
+          <p className="text-lg font-bold">
+            Nombre de visites
+            <Globe width={20} height={20} className="ml-1 inline mb-[2px]" />
+          </p>
 
           <p className="text-sm">
             Evolution mensuelle du nombre de visites d'
@@ -52,7 +50,6 @@ export default function CustomChart1({ data }: { data: any }) {
             selon la page et selon l'appareil.
           </p>
         </div>
-
         <div className="mt-3 mb-3 sm:m-0">
           <Select value={deviceSelected} onValueChange={setDeviceSelected}>
             <SelectTrigger
@@ -75,8 +72,7 @@ export default function CustomChart1({ data }: { data: any }) {
           </Select>
         </div>
       </div>
-
-      <ChartContainer config={chartConfig} className="min-h-[400px] w-full">
+      <ChartContainer config={chartConfig} className="h-[300px] w-full">
         <BarChart accessibilityLayer data={data[deviceSelected]}>
           <CartesianGrid vertical={false} />
           <XAxis

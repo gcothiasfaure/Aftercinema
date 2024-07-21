@@ -2,19 +2,20 @@ import instagramLogo from "@/public/platforms/instagram.png";
 
 import Image from "next/image";
 
-export default function CustomChart5({ data }: { data: any }) {
+export default function InstagramChart({ data }: { data: any }) {
   return (
     <div>
       <div className="flex items-center">
-        <p className="text-lg font-bold mr-1">Données Instagram</p>
-        <div>
+        <p className="text-lg font-bold">
+          Données Instagram
           <Image
             src={instagramLogo}
+            className="inline mb-[2px] ml-1"
             alt="Logo plateforme"
             width={20}
             height={20}
           />
-        </div>
+        </p>
       </div>
       <div className="flex justify-center">
         <div className="w-fit">
@@ -41,7 +42,7 @@ export default function CustomChart5({ data }: { data: any }) {
             </div>
             <div>
               <p className="text-xs">
-                Nombre de <span className="italic">J'aime</span> par{" "}
+                Nombre de <span className="italic">J'aime</span> par
                 <span className="italic">posts</span>
               </p>
               <p className="text-xl font-bold">

@@ -2,19 +2,20 @@ import youtubeLogo from "@/public/platforms/youtube.png";
 
 import Image from "next/image";
 
-export default function CustomChart4({ data }: { data: any }) {
+export default function YouTubeChart({ data }: { data: any }) {
   return (
     <div>
       <div className="flex items-center">
-        <p className="text-lg font-bold mr-1">Données YouTube</p>
-        <div>
+        <p className="text-lg font-bold">
+          Données YouTube
           <Image
             src={youtubeLogo}
             alt="Logo plateforme"
+            className="inline mb-[2px] ml-1"
             width={20}
             height={20}
           />
-        </div>
+        </p>
       </div>
       <div className="flex justify-center">
         <div className="w-fit flex px-5 sm:px-20 pt-5">
