@@ -16,7 +16,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="bg-gradient-to-t from-backgroundbottom to-white pb-2">
-      <div className="fixed top-0 right-[112px] z-50 mt-2 mr-2">
+      <div className="fixed top-0 left-0 z-50 mt-2 ml-2">
         <ChartMenuBtn />
       </div>
       <div className="fixed top-0 right-0 z-50 mt-2 mr-2">

@@ -11,7 +11,7 @@ export default function Listen() {
       <div className="fixed top-0 z-50 mt-2 ml-2">
         <HomeMenuBtn />
       </div>
-      <div className="fixed top-0 right-[112px] z-50 mt-2 mr-2">
+      <div className="fixed top-0 left-[56px] z-50 mt-2 ml-2">
         <ChartMenuBtn />
       </div>
       <div className="fixed top-0 right-0 z-50 mt-2 mr-2">
