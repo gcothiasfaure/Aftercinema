@@ -6,7 +6,7 @@ export default function NotFound() {
     <div className="h-[calc(100dvh)] bg-gradient-to-t from-backgroundbottom to-white">
       <LogoContainer />
       <div className="mt-5 text-center">
-        <h1 className="text-2xl font-bold ">Cette page n'existe pas.</h1>
+        <h1 className="text-2xl font-bold mb-3">Cette page n'existe pas.</h1>
         <ActionBtn />
       </div>
     </div>
