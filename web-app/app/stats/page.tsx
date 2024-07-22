@@ -39,7 +39,7 @@ export default async function Stats() {
   const data = await fetchData();
   if (!data) {
     return (
-      <div className="bg-gradient-to-t from-backgroundbottom to-white min-h-screen mb-16">
+      <div className="bg-gradient-to-t from-backgroundbottom to-white min-h-screen pb-16">
         <div className="fixed top-0 z-50 mt-2 ml-2">
           <HomeMenuBtn />
         </div>
@@ -63,7 +63,7 @@ export default async function Stats() {
             </p>
           </div>
         </div>
-        <div className="flex justify-center mt-16 mb-16">
+        <div className="flex justify-center mt-16">
           <ActionBtn />
         </div>
       </div>
