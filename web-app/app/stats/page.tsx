@@ -20,6 +20,7 @@ import ActionBtn from "@/components/action-btn";
 import EmailMenuBtn from "@/components/menu-btn/email-menu-btn";
 import ShareMenuBtn from "@/components/menu-btn/share-menu-btn";
 import HomeMenuBtn from "@/components/menu-btn/home-menu-btn";
+import AcastYouTubeDownloadsTable from "@/components/charts/acast-youtube-downloads-table";
 
 const fetchData = async () => {
   try {
@@ -103,18 +104,25 @@ export default async function Stats() {
             <AccordionTrigger>Table des matières</AccordionTrigger>
             <AccordionContent>
               <TableOfContentLink
-                id="#nbr-telechgt"
-                label="Nombre de téléchargements"
+                id="#evol-telechgt"
+                label="Evolution des téléchargements"
               />
               <TableOfContentLink
-                id="#nbr-auditeurs"
-                label="Nombre d'auditeurs"
+                id="#perf-episodes"
+                label="Performance des épisodes"
+              />
+              <TableOfContentLink
+                id="#evol-auditeurs"
+                label="Evolution des auditeurs"
               />
               <TableOfContentLink
                 id="#plateformes-ecoute"
                 label="Plateformes d'écoute"
               />
-              <TableOfContentLink id="#nbr-visites" label="Nombre de visites" />
+              <TableOfContentLink
+                id="#evol-visites"
+                label="Evolution des visites"
+              />
               <TableOfContentLink id="#nbr-clics" label="Nombre de clics" />
               <TableOfContentLink
                 id="#donnees-youtube"
@@ -129,7 +137,7 @@ export default async function Stats() {
         </Accordion>
       </div>
       <Separator
-        id="nbr-telechgt"
+        id="evol-telechgt"
         className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
       />
       <div className="max-w-screen-sm sm:mx-auto mx-2">
@@ -141,7 +149,19 @@ export default async function Stats() {
         />
       </div>
       <Separator
-        id="nbr-auditeurs"
+        id="perf-episodes"
+        className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
+      />
+      <div className="max-w-screen-sm sm:mx-auto mx-2">
+        <AcastYouTubeDownloadsTable
+          data={{
+            data: data["Acast+Youtube - Downloads"].data,
+            episodes: data["General - Episodes"].data,
+          }}
+        />
+      </div>
+      <Separator
+        id="evol-auditeurs"
         className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
       />
       <div className="max-w-screen-sm sm:mx-auto mx-2">
@@ -162,7 +182,7 @@ export default async function Stats() {
         />
       </div>
       <Separator
-        id="nbr-visites"
+        id="evol-visites"
         className="w-[50px] mx-auto bg-black mb-[50px] mt-10"
       />
       <div className="max-w-screen-sm sm:mx-auto mx-2">

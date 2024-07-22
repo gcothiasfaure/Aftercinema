@@ -126,7 +126,7 @@ export default function AcastYouTubeDownloadsChartContainer({
       <div className="flex items-center flex-col sm:flex-row mb-1">
         <div className="sm:mr-20">
           <p className="text-lg font-bold">
-            Nombre de téléchargements
+            Evolution des téléchargements
             <Headphones
               width={20}
               height={20}

@@ -122,7 +122,7 @@ export default function AcastListenersChartContainer({ data }: { data: any }) {
       <div className="flex items-center flex-col sm:flex-row mb-1">
         <div className="sm:mr-20">
           <p className="text-lg font-bold">
-            Nombre d'auditeurs
+            Evolution des auditeurs
             <Headphones
               width={20}
               height={20}

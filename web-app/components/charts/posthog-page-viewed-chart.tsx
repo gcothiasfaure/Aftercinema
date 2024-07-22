@@ -38,7 +38,7 @@ export default function PostHogPageViewedChart({ data }: { data: any }) {
       <div className="flex items-center flex-col sm:flex-row mb-3">
         <div className="sm:mr-20">
           <p className="text-lg font-bold">
-            Nombre de visites
+            Evolution des visites
             <Globe width={20} height={20} className="ml-1 inline mb-[2px]" />
           </p>
 
