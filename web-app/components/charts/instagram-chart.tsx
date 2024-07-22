@@ -2,7 +2,13 @@ import instagramLogo from "@/public/platforms/instagram.png";
 
 import Image from "next/image";
 
-export default function InstagramChart({ data }: { data: any }) {
+interface InstagramData {
+  likesCount: number;
+  postsCount: number;
+  followersCount: number;
+}
+
+export default function InstagramChart({ data }: { data: InstagramData }) {
   return (
     <div>
       <div className="flex items-center">

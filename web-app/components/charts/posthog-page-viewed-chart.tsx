@@ -35,7 +35,18 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function PostHogPageViewedChart({ data }: { data: any }) {
+interface PlatformData {
+  home: number;
+  month: string;
+  stats: number;
+  listen: number;
+}
+
+interface DeviceData {
+  [key: string]: PlatformData[];
+}
+
+export default function PostHogPageViewedChart({ data }: { data: DeviceData }) {
   const [deviceSelected, setDeviceSelected] = useState("Tout appareil");
   return (
     <div>

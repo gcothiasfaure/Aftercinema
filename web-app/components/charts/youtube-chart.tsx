@@ -2,7 +2,14 @@ import youtubeLogo from "@/public/platforms/youtube.png";
 
 import Image from "next/image";
 
-export default function YouTubeChart({ data }: { data: any }) {
+export default function YouTubeChart({
+  data,
+}: {
+  data: {
+    likesCount: number;
+    subscribersCount: number;
+  };
+}) {
   return (
     <div>
       <div className="flex items-center">

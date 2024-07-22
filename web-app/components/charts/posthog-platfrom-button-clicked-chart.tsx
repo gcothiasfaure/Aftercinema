@@ -41,8 +41,18 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const addFillProperty = (data: any) => {
-  data.forEach((item: any) => {
+interface PlatformData {
+  count: number;
+  platform: string;
+  fill: string;
+}
+
+interface DeviceData {
+  [key: string]: PlatformData[];
+}
+
+const addFillProperty = (data: PlatformData[]) => {
+  data.forEach((item: PlatformData) => {
     item.fill = "var(--color-" + item.platform + ")";
   });
   return data;
@@ -51,7 +61,7 @@ const addFillProperty = (data: any) => {
 export default function PostHogPlatfromButtonClickedChart({
   data,
 }: {
-  data: any;
+  data: DeviceData;
 }) {
   const [deviceSelected, setDeviceSelected] = useState("Tout appareil");
   return (
