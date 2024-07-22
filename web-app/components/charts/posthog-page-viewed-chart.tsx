@@ -29,9 +29,24 @@ const chartConfig = {
     label: "aftercinema.fr/listen",
     color: "#EE2101",
   },
+  stats: {
+    label: "aftercinema.fr/stats",
+    color: "#ff746a",
+  },
 } satisfies ChartConfig;
 
-export default function PostHogPageViewedChart({ data }: { data: any }) {
+interface PlatformData {
+  home: number;
+  month: string;
+  stats: number;
+  listen: number;
+}
+
+interface DeviceData {
+  [key: string]: PlatformData[];
+}
+
+export default function PostHogPageViewedChart({ data }: { data: DeviceData }) {
   const [deviceSelected, setDeviceSelected] = useState("Tout appareil");
   return (
     <div>
@@ -91,6 +106,14 @@ export default function PostHogPageViewedChart({ data }: { data: any }) {
             />
           </Bar>
           <Bar dataKey="listen" fill="var(--color-listen)" radius={4}>
+            <LabelList
+              position="top"
+              offset={12}
+              className="fill-foreground"
+              fontSize={12}
+            />
+          </Bar>
+          <Bar dataKey="stats" fill="var(--color-stats)" radius={4}>
             <LabelList
               position="top"
               offset={12}

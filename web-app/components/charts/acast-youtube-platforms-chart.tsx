@@ -32,15 +32,25 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const addFillProperty = (data: any) => {
-  data.forEach((item: any) => {
+const addFillProperty = (data: AcastYouTubePlatformsData[]) => {
+  data.forEach((item) => {
     item.fill = "var(--color-" + item.platform + ")";
   });
-  data.sort((a: any, b: any) => a.platform.localeCompare(b.platform));
+  data.sort((a, b) => a.platform.localeCompare(b.platform));
   return data;
 };
 
-export default function AcastYouTubePlatformsChart({ data }: { data: any }) {
+interface AcastYouTubePlatformsData {
+  value: number;
+  platform: string;
+  fill: string;
+}
+
+export default function AcastYouTubePlatformsChart({
+  data,
+}: {
+  data: AcastYouTubePlatformsData[];
+}) {
   return (
     <div>
       <div className="sm:mr-20 mb-3">
