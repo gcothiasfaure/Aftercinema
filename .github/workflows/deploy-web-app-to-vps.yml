@@ -24,8 +24,8 @@ jobs:
       - name: Build and push aftercinema-web-app Docker image into Docker Hub
         run: |
           cd web-app
-          docker build --build-arg NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.WEB_APP_ENV_NEXT_PUBLIC_POSTHOG_HOST }} --build-arg NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.WEB_APP_ENV_NEXT_PUBLIC_POSTHOG_KEY }} -t gaspardcothiasfaure/aftercinema-web-app:1.2 .
-          docker push gaspardcothiasfaure/aftercinema-web-app:1.2
+          docker build --build-arg NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.WEB_APP_ENV_NEXT_PUBLIC_POSTHOG_HOST }} --build-arg NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.WEB_APP_ENV_NEXT_PUBLIC_POSTHOG_KEY }} -t gaspardcothiasfaure/aftercinema-web-app:1.3 .
+          docker push gaspardcothiasfaure/aftercinema-web-app:1.3
 
       - name: Pull aftercinema-web-app Docker image and launch docker-compose.yml
         uses: appleboy/ssh-action@master
@@ -34,5 +34,5 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            docker pull gaspardcothiasfaure/aftercinema-web-app:1.2
+            docker pull gaspardcothiasfaure/aftercinema-web-app:1.3
             docker-compose -f /home/debian/lgna-sandbox/aftercinema/docker-compose.yml --env-file /home/debian/lgna-sandbox/aftercinema/.env up -d

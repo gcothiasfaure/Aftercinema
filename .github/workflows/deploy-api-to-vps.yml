@@ -24,8 +24,8 @@ jobs:
       - name: Build and push aftercinema-api Docker image into Docker Hub
         run: |
           cd api
-          docker build -t gaspardcothiasfaure/aftercinema-api:1.1 .
-          docker push gaspardcothiasfaure/aftercinema-api:1.1
+          docker build -t gaspardcothiasfaure/aftercinema-api:1.3 .
+          docker push gaspardcothiasfaure/aftercinema-api:1.3
 
       - name: Pull aftercinema-api Docker image and launch docker-compose.yml
         uses: appleboy/ssh-action@master
@@ -34,5 +34,5 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            docker pull gaspardcothiasfaure/aftercinema-api:1.1
+            docker pull gaspardcothiasfaure/aftercinema-api:1.3
             docker-compose -f /home/debian/lgna-sandbox/aftercinema/docker-compose.yml --env-file /home/debian/lgna-sandbox/aftercinema/.env up -d

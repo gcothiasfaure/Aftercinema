@@ -24,7 +24,7 @@ import AcastYouTubeDownloadsTable from "@/components/charts/acast-youtube-downlo
 
 const fetchData = async () => {
   try {
-    const res = await fetch("http://127.0.0.1:8000/get-stats-data");
+    const res = await fetch("https://api.aftercinema.fr/get-stats-data");
     if (!res.ok) {
       throw new Error("Network response was not ok");
     }

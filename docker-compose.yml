@@ -28,13 +28,12 @@ services:
     depends_on:
       - aftercinema-api-db
     restart: always
-    image: gaspardcothiasfaure/aftercinema-api:1.1
+    image: gaspardcothiasfaure/aftercinema-api:1.3
     container_name: aftercinema-api
     networks:
       - aftercinema-api
       - traefik-lgna-sandbox
     environment:
-      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
       - POSTGRESQL_CONN_STRING=${POSTGRESQL_CONN_STRING}
     labels:
       - "traefik.enable=true"
@@ -46,7 +45,7 @@ services:
     depends_on:
       - aftercinema-api
     restart: always
-    image: gaspardcothiasfaure/aftercinema-web-app:1.2
+    image: gaspardcothiasfaure/aftercinema-web-app:1.3
     container_name: aftercinema-web-app
     networks:
       - aftercinema-web-app

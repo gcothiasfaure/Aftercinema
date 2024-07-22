@@ -1,5 +1,4 @@
 from fastapi import Depends, FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, create_engine
 import os
 from sqlmodel import select
@@ -12,12 +11,6 @@ def get_session():
         yield session
 
 app = FastAPI(docs_url=None)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=['https://aftercinema.fr', 'https://www.aftercinema.fr','http://localhost:3000'],
-    allow_methods=["GET"]
-)
 
 @app.get("/")
 def hello():
