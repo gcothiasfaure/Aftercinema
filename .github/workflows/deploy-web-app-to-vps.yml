@@ -8,7 +8,7 @@ on:
       - "web-app/**"
 
 jobs:
-  deploy-web-app-to-ovh:
+  deploy-web-app-to-vps:
     runs-on: ubuntu-latest
 
     steps:
