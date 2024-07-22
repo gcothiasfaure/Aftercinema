@@ -10,12 +10,12 @@ export default function HomeMenuBtn() {
   const posthog = usePostHog();
   return (
     <Link
-      href="/"
+      href="/stats"
       onClick={() => {
-        posthog.capture("Menu button clicked", { $type: "Home" });
+        posthog.capture("Menu button clicked", { $type: "Chart" });
       }}
     >
-      <Icon iconLabel="home" />
+      <Icon iconLabel="chart" />
     </Link>
   );
 }
