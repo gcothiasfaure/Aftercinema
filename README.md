@@ -18,7 +18,7 @@ Pour rendre accessible ces données statistiques, un Notebook Python récupère 
 
 ```
 cd api
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 export POSTGRESQL_CONN_STRING=XXX
@@ -37,6 +37,12 @@ uvicorn main:app --reload
 ```
 
 Où _XXX_ est la chaîne de connexion à la base PostgreSQL [disponible ici](https://www.notion.so/gas-perso/projets-ecd7b57cf1f14923905b834e808d904a?pvs=4#c75f80609d4049da8dae52568b578191).
+
+Ajoutez l. 27 de `web-app/app/stats/page.tsx` :
+
+```js
+const res = await fetch("http://127.0.0.1:8000/get-stats-data");
+```
 
 ### prod
 
@@ -62,6 +68,17 @@ Publié à [aftercinema.fr](https://aftercinema.fr) automatiquement via la Githu
 
 ### local
 
+#### MACOS
+
+```
+cd get-stats-data
+python3 -m venv .venv
+source .venv/bin/activate
+pip install jupyter
+```
+
+#### WINDOWS
+
 ```
 cd get-stats-data
 python -m venv .venv
@@ -69,4 +86,4 @@ python -m venv .venv
 pip install jupyter
 ```
 
-Il faut ensuite copier coller le code de définition des variables d'environnements dans la cellule vide prévue à cet effet [disponible ici](https://www.notion.so/gas-perso/projets-ecd7b57cf1f14923905b834e808d904a?pvs=4#c75f80609d4049da8dae52568b578191).
+Il faut ensuite copier coller le code de définition des variables d'environnements dans la cellule vide prévue à cet effet [disponible ici](https://www.notion.so/gas-perso/projets-ecd7b57cf1f14923905b834e808d904a?pvs=4#c75f80609d4049da8dae52568b578191), il faut remplacer ACAST_TOKEN par un nouveau token obtenu sur [acast.com](https://www.acast.com).

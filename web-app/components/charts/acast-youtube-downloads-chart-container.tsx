@@ -27,7 +27,7 @@ export default function AcastYouTubeDownloadsChartContainer({
       (ep: any) => ep.aftercinema_id === episodeId
     );
     if (!episode) return null;
-    const date = new Date(episode.acast_publishedDate.slice(0, 8));
+    const date = new Date(episode.acast_publishedDate.slice(0, 10));
     return date;
   };
 
